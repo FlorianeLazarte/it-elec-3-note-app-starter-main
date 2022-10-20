@@ -1,6 +1,7 @@
 const add = require('./add')
 const read = require('./read')
 const write = require('./write')
+const update = require('./update')
 
 // get user input
 const data = process.argv
@@ -33,6 +34,18 @@ if(data[2] =='delete') {
     //import delete
     const del = require('./del');
     del(id,oldNote);
+
+    console.log(read());
+}
+if(data[2] == 'update') {
+    note = {
+        id: data[3],
+        title: data[4],
+        body: data[5]
+    }
+
+    var oldNote = read()
+    update(note, oldNote);
 
     console.log(read());
 }
